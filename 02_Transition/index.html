@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css" />
+    <title>Transition</title>
+    <style>
+        .box-container {
+            display: flex;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #000;
+            background: rgba(255, 255, 0, 0.7);
+            transition: .5s;
+        }
+        .box:hover {
+            /* transform: scale(1.5); */
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Transition</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Officiis voluptate veniam, dolorem quibusdam doloribus dolor, 
+        voluptates consequatur nesciunt, 
+        in eligendi quas architecto recusandae illum adipisci veritatis! Quam optio dolorem at?
+    </p>
+    <div class="box-container">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+        <div class="box">E</div>
+    </div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Officiis voluptate veniam, dolorem quibusdam doloribus dolor, 
+        voluptates consequatur nesciunt, 
+        in eligendi quas architecto recusandae illum adipisci veritatis! Quam optio dolorem at?
+    </p>
+</body>
+</html>
