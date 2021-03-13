@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css" />
+    <title>Animation_03</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        @keyframes spaceship-ani {
+            /*
+            0% {
+                시작점은 생략이 가능하다.
+                굳이 시작지점은 0 0 으로 안 잡아줘도 된다. 기존 속성에 있기 때문
+            } ===
+            from {
+
+            }
+            */
+            100% {
+                /* 
+                    우리가 150 150 으로 줄여서 표현하고 있으니까
+                    그 절반인 2550 이 끝지점이다.
+                */
+                background-position: -2550px 0;
+            }
+            /*
+            to {
+
+            }
+            */
+        }
+
+        .spaceship {
+            width: 150px;
+            height: 150px;
+
+            /* 
+                이미지 사이즈는 / 이후로 표현하면 된다.
+                빨리 계산하는 법
+                가로 세로 중에 빨리 계산되는 것을 설정하고 나머지는 auto 로 설정한다.
+                현재 예제 그림은 가로 길이가 길어서 나누려면 계산이 오래 걸릴 것이다.
+                하지만 세로 크기는 일정하므로 이를 이용하자.
+            */
+            background: url('./images/sprite_spaceship.png') no-repeat 0 0 / auto 150px;
+            animation: spaceship-ani 1s infinite steps(17);
+        }
+
+        .spaceship:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="spaceship"></div>
+</body>
+</html>
