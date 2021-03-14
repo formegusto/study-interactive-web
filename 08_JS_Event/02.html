@@ -37,19 +37,19 @@
             left: 5%;
             bottom: 5%;
             background-image: url('images/ilbuni_0.png');
-            animation-duration: 2s;
+            animation-duration: 7s;
         }
         .ilbuni.b {
             left: 10%;
             bottom: 3%;
             background-image: url('images/ilbuni_1.png');
-            animation-duration: 3s;
+            animation-duration: 8s;
         }
         .ilbuni.c {
             left: 7%;
             bottom: 10%;
             background-image: url('images/ilbuni_2.png');
-            animation-duration: 4s;
+            animation-duration: 9s;
         }
     </style>
 </head>
@@ -62,18 +62,30 @@
 
     <script>
         // 직접 타이핑 해보세요
-        (function() {
-            const ilbuniGrp = document.querySelectorAll('.ilbuni');
+        // (function() {
+        //     const ilbuniGrp = document.querySelectorAll('.ilbuni');
 
-            const clickEventHandler = function() {
-                // document.querySelector('.stage').removeChild(this);
-                console.log(this.parentNode);
-                this.parentNode.removeChild(this);
+        //     const clickEventHandler = function() {
+        //         // document.querySelector('.stage').removeChild(this);
+        //         console.log(this.parentNode);
+        //         this.parentNode.removeChild(this);
+        //     };
+
+        //     for(let i = 0; i < ilbuniGrp.length ; i++) {
+        //         ilbuniGrp[i].addEventListener('click', clickEventHandler);
+        //     }
+        // })();
+        (function() {
+            // 이벤트 위임
+            const stage = document.querySelector(".stage");
+
+            const clickEventHandler = function(e) {
+                console.log(e.target);
+                if(e.target.classList.contains('ilbuni')) 
+                    stage.removeChild(e.target);
             };
 
-            for(let i = 0; i < ilbuniGrp.length ; i++) {
-                ilbuniGrp[i].addEventListener('click', clickEventHandler);
-            }
+            stage.addEventListener('click', clickEventHandler);
         })();
     </script>
 </body>
