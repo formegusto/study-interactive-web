@@ -73,17 +73,30 @@
 
         // 즉시 실행 함수로 만든다.
         // 전역변수를 최소화 할 수가 있어진다.
-        (function() {
-            const ilbuni = document.querySelector('.c');
+        // (function() {
+        //     const ilbuni = document.querySelector('.c');
 
-            const clickEventHandler = () => {
-                ilbuni.classList.toggle('special');
+        //     const clickEventHandler = () => {
+        //         ilbuni.classList.toggle('special');
+        //     }
+
+        //     // ilbuni.addEventListener('click', function() {
+        //     //     ilbuni.classList.toggle('special');
+        //     // });
+        //     ilbuni.addEventListener('click', clickEventHandler);
+        // })();
+
+        (function() {
+            const characters = document.querySelector(".characters");
+
+            function clickHandler(e) {
+                // console.log(this);
+                // this에는 character가 붙음
+                // console.log(e.currentTarget);
+                console.log(e.target);
             }
 
-            // ilbuni.addEventListener('click', function() {
-            //     ilbuni.classList.toggle('special');
-            // });
-            ilbuni.addEventListener('click', clickEventHandler);
+            characters.addEventListener('click', clickHandler);
         })();
     </script>
 </body>

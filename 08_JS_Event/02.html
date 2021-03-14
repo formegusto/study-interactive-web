@@ -30,6 +30,8 @@
             background-position: 50% 50%;
             background-size: contain;
             animation: moving infinite alternate;
+
+            cursor: pointer;
         }
         .ilbuni.a {
             left: 5%;
@@ -60,6 +62,19 @@
 
     <script>
         // 직접 타이핑 해보세요
+        (function() {
+            const ilbuniGrp = document.querySelectorAll('.ilbuni');
+
+            const clickEventHandler = function() {
+                // document.querySelector('.stage').removeChild(this);
+                console.log(this.parentNode);
+                this.parentNode.removeChild(this);
+            };
+
+            for(let i = 0; i < ilbuniGrp.length ; i++) {
+                ilbuniGrp[i].addEventListener('click', clickEventHandler);
+            }
+        })();
     </script>
 </body>
 </html>
