@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transition/Animation Event</title>
+  <style>
+    .ball {
+      /* 설정 시 조금 완화되기는 하지만 완벽히 중앙으로 오지는 않았다. */
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      /* 이 방법도 좋구 아니면, 스크립트로 풀기 */
+      /* margin: -15px 0 0 -15px; */
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: rgb(255,0,0);
+      transition: 1s;
+    }
+
+    .ball.end {
+      background-color: dodgerblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="ball"></div>
+  <script>
+    const ballElem = document.querySelector('.ball');
+
+    window.addEventListener('click', function (e) {
+      // 마우스 좌표값을 구해서 이곳으로 볼을 이동시켜보자
+      console.log(e.clientX, e.clientY);
+    
+      console.log(`translate(${e.clientX}px,${e.clientY}px);`);
+      ballElem.style.transform = 'translate(' + (e.clientX - 15) + 'px,' + (e.clientY - 15) + 'px)';
+    });
+
+    // transition 이 끝날 때 발생하는 리스너
+    // ballElem.addEventListener('transitionend', function(e) {
+    //   ballElem.classList.add('end');
+
+    //   console.log(e.elapsedTime);
+    //   // transition duration 속성 값이 찍힌다.
+    //   console.log(e.propertyName);
+    //   // 바뀐 속성이 찍힌다.
+    //   // 또 end 속성이 붙으면서 transition이 한번 더 일어나서
+    //   // background가 추가적으로 뜬다.
+    // });
+
+    ballElem.addEventListener('transitionstart', function(e) {
+      ballElem.classList.add('end');
+
+      console.log(e.elapsedTime);
+      // 0이 찍힌다
+      // transition duration 속성 값이 찍힌다.
+      console.log(e.propertyName);
+      // 바뀐 속성이 찍힌다.
+      // 또 end 속성이 붙으면서 transition이 한번 더 일어나서
+      // background가 추가적으로 뜬다.
+    });
+  </script>
+</body>
+</html>
