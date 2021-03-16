@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <h1>Obejct</h1>
+
+    <script>
+        // const person = {};
+        // // const person = new Object();
+
+        // person.name = '일분이';
+        // person.age = 10;
+        // person.introduce = function() {
+        //     console.log(`
+        //         안녕하세요!
+        //         저는 ${this.name},
+        //         나이는 ${this.age}살 입니다!
+        //     `);
+        // }
+
+        // person.introduce();
+
+        const person = {
+            name: '일분이',
+            age: 10,
+            introduce: function() {
+                console.log(`
+                    안녕하세요!
+                    저는 ${this.name},
+                    나이는 ${this.age}살 입니다!
+                `);
+            }
+        }
+
+        person.introduce();
+        console.log(person);
+    </script>
+</body>
+</html>
