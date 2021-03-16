@@ -36,15 +36,16 @@
     const ballElem = document.querySelector('.ball');
 
     window.addEventListener('click', function (e) {
-        ballElem.style.animation = 'ball-ani 1s 3 forwards';
+        /* alternate 도 횟수에 들어간다.(Reverse 되는 부분에서) */
+        ballElem.style.animation = 'ball-ani 1s 4 alternate forwards';
     });
 
-    ballElem.addEventListener('animationend', function (e) {
+    ballElem.addEventListener('animationend', function () {
         ballElem.classList.add('end');
     });
-    
-    ballElem.addEventListener('animationiteration', function (e) {
-        console.log('반복!');
+
+    ballElem.addEventListener('animationiteration', function() {
+        console.log('반복');
     });
     </script>
 </body>
