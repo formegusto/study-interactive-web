@@ -22,6 +22,8 @@
 
 			width: 100px;
 			height: 150px;
+
+			cursor: pointer;
 		}
 
 		.door-back {
@@ -82,11 +84,20 @@
 			background-color: rgba(0,0,255, .7);
 		}
 
-		.door:hover .door-body {
+		/* .door:hover .door-body {
 			transform: perspective(800px) rotateY(-120deg);
 		}
 
 		.door:hover .ilbuni {
+			transform: translate3d(0, 0, 0);
+		} */
+
+		/* css-status 로 전환해보자 */
+		.door-opened .door-body {
+			transform: perspective(800px) rotateY(-120deg);
+		}
+
+		.door-opened .ilbuni {
 			transform: translate3d(0, 0, 0);
 		}
 	</style>
@@ -113,6 +124,39 @@
 		</div>
 	</div>
 	<script>
+		(function() {
+			const stageElem = document.querySelector('.stage');
+			let currentItem;
+
+			function activate(targetElem) {
+				targetElem.classList.add('door-opened');
+				currentItem = targetElem;
+			}
+
+			function inactivate() {
+				currentItem.classList.remove('door-opened');
+			}
+
+			function doorHandler(e) {
+				const targetElem = e.target;
+
+				// const currentItem = document.querySelector('.door-opened');
+				if(currentItem)
+					inactivate();
+				// targetElem.classList.add('door-opened');
+				// add
+				// remove
+				// toggle
+				// contains 기억!
+				if(targetElem.classList.contains('door-body')) {
+					activate(targetElem.parentNode);
+				}
+			}
+
+			stageElem.addEventListener('click', doorHandler);
+
+			activate( document.querySelector('.door:nth-child(2)') );
+		})();
 	</script>
 </body>
 </html>
