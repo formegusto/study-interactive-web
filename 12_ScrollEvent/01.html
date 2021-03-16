@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+    img {
+        max-width: 100%;
+    }
+    .content {
+        /* viewport height */
+        /* 10배 */
+        height: 1000vh;
+        padding: 20%;
+        background: yellowgreen;
+    }
+    .output {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        font-size: 2rem;
+        font-weight: 200;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    .ilbuni {
+        width: 100px;
+        margin: 20px auto;
+        transition: 1s;
+    }
+    /* 스크롤이 들어오면 변하도록 */
+    .ilbuni.zoom {
+        transform: scale(2);
+    }
+    </style>
+</head>
+<body>
+    <div class="output">output</div>
+    <div class="content">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo culpa id ratione alias illum aliquam accusamus deleniti dolores dignissimos, temporibus iste perspiciatis voluptatem repudiandae debitis similique fugiat dolor, doloremque quos mollitia repellendus iure exercitationem molestiae ab! Veritatis harum voluptate enim ducimus amet vitae veniam dignissimos possimus facilis eaque minus similique, vel commodi sed? Sequi distinctio debitis numquam, necessitatibus officiis quam, sed rerum id culpa totam provident repellendus iste, laborum maiores, consequuntur fugiat voluptatibus? Ad, architecto. Ipsam minus quis, ea quas, ex impedit quia distinctio commodi expedita laudantium dolores cum? Quisquam, odit, laboriosam consequuntur expedita optio laudantium. Optio laboriosam, repellendus laborum.
+        </p>
+        <figure class="ilbuni">
+            <img src="images/ilbuni_0.png" alt="일분이">
+        </figure>
+    </div>
+    <script>
+        (function() {
+            const outputElem = document.querySelector('.output');
+            const ilbuniElem = document.querySelector('.ilbuni');
+            let num = 0;
+
+            // 이벤트 리스너는 따로 함수를 만들고,
+            // 필요한 기능들만 기술하는 것이 좋다.
+            function showValue() {
+                let posY = ilbuniElem.getBoundingClientRect().top;
+                outputElem.innerHTML = posY;
+                
+                // 브라우저 크기 구하는 변수
+                console.log(window.innerHeight);
+
+                // 3. 객체에 변화주기
+                // 브라우저의 1 / 5 지점에 일부니가 왔을 때, 변화주기
+                if(posY < window. innerHeight * 0.2) {
+                    ilbuniElem.classList.add('zoom');
+                } else {
+                    ilbuniElem.classList.remove('zoom');
+                }
+            }
+
+            // Scroll Event
+            // window에 걸어도 되고, document에 걸어도 된다.
+            window.addEventListener('scroll', function() {
+                // 현재 페이지 YOffset
+                // 내릴수록 값이 높아진다.
+                // outputElem.innerHTML = window.pageYOffset;
+                
+                // 1. 하지만 불변할 것 이다.
+                // 처음 위치만 가져오기 때문이다. (offsetTop의 기능)
+                // outputElem.innerHTML = ilbuniElem.offsetTop;
+
+                // 2. 객체를 반환하는 
+                // DOMRect.getBoundingClientRect() 를 사용하자.
+                // console.log(ilbuniElem.getBoundingClientRect());
+                showValue();
+            });
+
+            showValue();
+        })();
+    </script>
+</body>
+</html>
