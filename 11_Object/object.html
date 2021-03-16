@@ -25,20 +25,30 @@
 
         // person.introduce();
 
-        const person = {
-            name: '일분이',
-            age: 10,
-            introduce: function() {
-                console.log(`
+        function Person(name, age) {
+            if(!new.target)
+                throw new SyntaxError('new 를 통해 호출해주세요!');
+            this.name = name;
+            this.age = age;
+        }
+        console.log(Object.getOwnPropertyDescriptors(Person));
+
+        /* 공유하면 되는 메서드 */
+        Person.prototype.introduce = function() {
+            console.log(`
                     안녕하세요!
                     저는 ${this.name},
                     나이는 ${this.age}살 입니다!
                 `);
-            }
         }
 
+        // 인스턴스
+        const person = new Person('일분이', 10);
+        const person2 = new Person('이분이', 8);
+        // const person3 = Person('이분이', 8);
+
         person.introduce();
-        console.log(person);
+        person2.introduce();
     </script>
 </body>
 </html>
