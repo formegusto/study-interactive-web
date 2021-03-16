@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>setTimeout</title>
+	<style>
+		.btn {
+			font-size: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">취소</button>
+
+	<script>
+		let timeId;
+		const cancleBtn = document.querySelector('.btn');
+
+		function sample() {
+			console.log('sample!');
+		}
+		// setTimeout(function, 몇 초후에 함수를 실행할 것 인지)
+		timeId = setTimeout(sample, 3000);
+
+		console.log(timeId);
+
+		// 이 timeId 값으로 이를 취소할 수 있다.
+		cancleBtn.addEventListener('click', () => clearTimeout(timeId));
+		// clearTimeout(timeId);
+	</script>
+</body>
+</html>

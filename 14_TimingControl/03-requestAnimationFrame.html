@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>requestAnimationFrame</title>
+	<style>
+		.btn {
+			font-size: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">취소</button>
+
+	<script>
+		let timeId;
+		let n = 0;
+		const btn = document.querySelector('.btn');
+
+		function sample() {
+			n++;
+			console.log(n);
+			if (n > 200) {
+				return;
+			}
+			// 반복 시킬 함수 안에다가 작성을 한다.
+			// 목표가 초당 1000/60
+			timeId = requestAnimationFrame(sample);
+		}
+
+		// 이렇게 두면, 한번만 실행시킨다.
+		// 즉, 재귀로 계속해서 호출되는 것이다.
+		// requestAnimationFrame(sample);
+		sample();
+
+		btn.addEventListener('click', function () {
+			// cancelAnimationFrame으로 취소한다.
+			cancelAnimationFrame(timeId);
+		});
+	</script>
+</body>
+</html>

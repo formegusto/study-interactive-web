@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>setInterval</title>
+	<style>
+		.btn {
+			font-size: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">취소</button>
+
+	<script>
+		let timeId;
+		const btn = document.querySelector('.btn');
+
+		function sample() {
+			console.log('sample!');
+		}
+
+		// 초당 60번
+		// setInterval (function, function을 반복 실행 시킬 구간)
+		timeId = setInterval(sample, 1000/60);
+
+		btn.addEventListener('click', function () {
+			clearInterval(timeId);
+		});
+	</script>
+</body>
+</html>
