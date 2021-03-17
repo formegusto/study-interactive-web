@@ -1,4 +1,5 @@
 body {
+  height: 500vw;
   font-family: "Apple SD Gothic Neo", "Roboto", "Noto Sans KR", NanumGothic,
     "Malgun Gothic", sans-serif;
   -webkit-overflow-scrolling: touch;
@@ -15,7 +16,7 @@ body {
   /* 스크롤이 되게 만들어야 하는데, 위로 올라가는 느낌이 아니라 */
   /* 앞에 그대로 있는 상태에서 앞뒤로 왔다갔다 하는 식으로, */
   /* 즉, 공간은 그대로 있어야 한다. */
-  display: fixed;
+  position: fixed;
   left: 0;
   top: 0;
 
