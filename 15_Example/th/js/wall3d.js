@@ -2,6 +2,11 @@
   // 스크롤 할 때 하우스를 이동시킬 것이다.
   const houseElem = document.querySelector(".house");
   const barElem = document.querySelector(".progress-bar");
+  /* 각도 계산에 쓰일 객체 */
+  const mousePos = { x: 0, y: 0 };
+
+  // stage
+  const stageElem = document.querySelector(".stage");
   // 창 사이즈에 따라 바뀐다.
   // innerHeight가 바뀌기 때문.
   let maxScrollValue;
@@ -40,4 +45,21 @@
   // 코드는 겹치지 않는 것이 좋다. 그래서 처음에 한번 실행시키고,
   // 그 후 사이즈가 변화할 때 마다 실행되도록 한다.
   resizeHandler();
+
+  window.addEventListener("mousemove", function (e) {
+    // console.log(e.clientX, e.clientY);
+    // x 가 왼쪽으로 갈수록 -1에 가까워지고,
+    // 즉 가운데에 오면 0에 가까워진다.
+    // 오른쪽에 갈수록 1에 가까워진다.
+    // y 도 위로 갈수록 1에 가까워지고,
+    // 내려갈수록 -1에 가까워진다.
+    mousePos.x = -1 + (e.clientX / window.innerWidth) * 2;
+    mousePos.y = 1 - (e.clientY / window.innerHeight) * 2;
+    // console.log(mousePos);
+
+    // X 축은 위 아래니까 y좌표의 영향을 받는다.
+    // 곱하는 숫자는 민감도
+    stageElem.style.transform =
+      "rotateX(" + mousePos.y * 5 + "deg) rotateY(" + mousePos.x * 5 + "deg)";
+  });
 })();
