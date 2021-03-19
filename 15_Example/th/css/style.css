@@ -104,3 +104,21 @@ body {
 .wall-front-d {
   transform: translateZ(-500vw);
 }
+
+/* 회색 영역 */
+.progress-bar-con {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 5px;
+  background-color: #555;
+  z-index: 1;
+}
+
+/* 하늘색 채워지는 영역 */
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background-color: #00a8ff;
+}
